@@ -1,7 +1,29 @@
 {
-  "name": "Modultafel",
+  "name": "modultafel",
   "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
   "dependencies": {
-    "bootstrap": "^5.2.2"
-  }
+    "bootstrap": "^5.2.2",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kappeand/Modultafel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kappeand/Modultafel/issues"
+  },
+  "homepage": "https://github.com/kappeand/Modultafel#readme",
+  "description": ""
 }
