@@ -1,0 +1,19 @@
+$primary: #0164A7;
+$font-family-sans-serif: HelveticaRoundedBold, Arial, "Helvetica Neue", Helvetica, sans-serif !default;
+$font-family-serif: HelveticaRoundedBold, Arial, "Helvetica Neue", Helvetica, serif !default;
+$font-family-monospace: $font-family-sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+
+body {
+  margin-top: 1em !important;
+}
+
+.navbar-brand {
+  margin: 0 1em;
+}
+
+#fileUploadForm{
+  width: 50%;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";

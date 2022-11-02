@@ -12,8 +12,8 @@ body {
   margin: 0 1em;
 }
 
-#fileUploadForm{
-  width: 50%;
+.card-title, .card-text {
+  font-size: 0.7rem !important;
 }
 
-@import "../Modultafel_oldold/node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
