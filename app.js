@@ -10,21 +10,23 @@ app.use(express.static('public'), fileUpload({
 }));
 
 app.post('/upload', function (req, res) {
-    let sampleFile;
+    let excelFile;
     let uploadPath;
 
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
     }
-    sampleFile = req.files.sampleFile;
-    uploadPath = __dirname + '/tmp/' + Date.now() + "_" + sampleFile.name;
+    excelFile = req.files.excelFile;
+    uploadPath = __dirname + '/tmp/' + Date.now() + "_" + excelFile.name;
 
-    // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv(uploadPath, function (err) {
+    // move the file to temp path
+    excelFile.mv(uploadPath, function (err) {
         if (err)
             return res.status(500).send(err);
 
-        res.send('File uploaded!');
+        //TODO @Andrin return generated file here instead of Modultafel.html
+        res.attachment("Modultafel.html");
+        res.send();
     });
 });
 
