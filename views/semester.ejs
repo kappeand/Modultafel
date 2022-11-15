@@ -1,0 +1,30 @@
+<!-- **************** Semester **************** -->
+<div class="row">
+    <div class="col-1" style="width: 6%">
+        <h4 class="text-white" style="background-color: #02015D">
+            <%= modulesOfSemester[0].Semester.split('.')[0] %>
+        </h4>
+        <p style="font-size: 0.8rem;">
+            <% numberOfECTS = 0; %>
+            <% modulesOfSemester.forEach(module => {
+                numberOfECTS += module.ECTS;
+            }); %>
+            <%= numberOfECTS %> ECTS
+        </p>
+    </div>
+    <div class="col">
+        <div class="row mb-1">
+
+            <% currentModulgruppe = "-" %>
+            <% modulesOfSemester.forEach(module => {
+            if (module.Modulgruppe !== currentModulgruppe) { %>
+                <% var modulesOfModulgruppe = modulesOfSemester.filter(module => {
+                    if (module.Modulgruppe == currentModulgruppe) return true;
+                }) %>
+                <%- include('modulgruppe', {modules: modulesOfModulgruppe}) %>
+            <% currentModulgruppe = module.Modulgruppe }
+            }) %>
+
+        </div>
+    </div>
+</div>
