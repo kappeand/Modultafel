@@ -1,6 +1,10 @@
 <!-- **************** Modulgruppe **************** -->
-<div class="col ms-1" style="max-width: fit-content; background-color: #9be7ff">
+<div class="col ms-1" style="max-width: fit-content; background-color: <%= modulesOfModulgruppe[0].Modulgruppe %>">
     <div class="row">
-        //module
+
+        <% modulesOfModulgruppe.forEach(module => { %>
+            <%- include('modul', {module: module}) %>
+        <% }) %>
+
     </div>
 </div>

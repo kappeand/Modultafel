@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 8080;
 const xlsx = require('xlsx');
 
 const fs = require('fs')
-//const ejs = require("ejs");
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'), fileUpload({
@@ -30,7 +29,13 @@ app.post('/upload', function (req, res) {
 
         const workbook = xlsx.readFile(uploadPath); // parse excel file
         const sheetNames = workbook.SheetNames;
+
         const modules = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[1]]);
+        const colors = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
+
+        modules.map(module => {
+            module.Modulgruppe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+        });
 
         let semesterArray = [];
         let currentSemester = modules[0].Semester.split('.')[0];
@@ -42,11 +47,9 @@ app.post('/upload', function (req, res) {
         });
 
         res.render('main', {semesterArray: semesterArray}, (err, html) => {
-            console.log(err);
+                console.log(err);
                 fs.writeFile('Modultafel.html', html, () => {
                 });
-                //res.attachment('Modultafel.html');
-            res.send(html);
             }
         );
 

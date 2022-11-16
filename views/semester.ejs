@@ -15,16 +15,19 @@
     <div class="col">
         <div class="row mb-1">
 
-            <% currentModulgruppe = "-" %>
+            <% var addedModulgruppen = [] %>
+            <% var modulgruppenOfSemester = [] %>
             <% modulesOfSemester.forEach(module => {
-            if (module.Modulgruppe !== currentModulgruppe) { %>
-                <% var modulesOfModulgruppe = modulesOfSemester.filter(module => {
-                    if (module.Modulgruppe == currentModulgruppe) return true;
-                }) %>
-                <%- include('modulgruppe', {modules: modulesOfModulgruppe}) %>
-            <% currentModulgruppe = module.Modulgruppe }
+                var currentModulgruppe = module.Modulgruppe;
+                if (!addedModulgruppen.includes(currentModulgruppe)) {
+                    modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === currentModulgruppe));
+                    addedModulgruppen.push(currentModulgruppe);
+                }
             }) %>
 
+            <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
+                <%- include('modulgruppe', {modulesOfModulgruppe: modulesOfModulgruppe}) %>
+            <% }) %>
         </div>
     </div>
 </div>
