@@ -16,4 +16,9 @@ body {
   font-size: 0.7rem !important;
 }
 
+.card {
+  border-radius: 0.1rem !important;
+  border-width: 0px !important;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";

@@ -11,6 +11,11 @@ body {
   font-size: 0.7rem !important;
 }
 
+.card {
+  border-radius: 0.1rem !important;
+  border-width: 0px !important;
+}
+
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
