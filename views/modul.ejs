@@ -1,14 +1,14 @@
 <!-- **************** Modul **************** -->
 <div class="col my-1">
     <div class="card"
-         style="width: 150px; background-color: <%= module.Modulgruppe %>; cursor: pointer;"
+         style="width: 150px; background-color: <%= module.FarbeModulkaestchen %>; cursor: pointer;"
          onclick="window.open('<%= module.Link %>')">
         <div class="card-body p-2">
             <div style="min-height: 50px;">
                 <h6 class="card-title" lang="de" style="hyphens: auto; "><%= module.Modulbezeichnung %></h6>
             </div>
             <hr class="p-0 m-0"/>
-            <p class="card-text"><%= module.ECTS %></p>
+            <p class="card-text"><%= module.ECTS %> ECTS</p>
         </div>
     </div>
 </div>

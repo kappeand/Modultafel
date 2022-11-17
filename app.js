@@ -32,9 +32,12 @@ app.post('/upload', function (req, res) {
 
         const modules = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[1]]);
         const colors = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
+        console.log(colors);
 
         modules.map(module => {
-            module.Modulgruppe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+            module.FarbeModulkaestchen = colors.find(color => color.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
+            module.Hintergrundfarbe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+            console.log(module);
         });
 
         let semesterArray = [];
