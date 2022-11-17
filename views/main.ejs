@@ -3,24 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <link href="modultafel.css" rel="stylesheet">
     <title>Modultafel</title>
+    <style><%- include('style') %></style>
 </head>
 <body>
-<div class="container text-center">
-    <nav class="navbar navbar-dark bg-primary mb-3">
+<div class="text-center">
+    <nav class="navbar navbar-light bg-white mb-3">
+        <h1 class="navbar-brand fw-bold">Modultafel Bachelorstudiengang Wirtschaftsinformatik
+            Vollzeit, ab Herbstsemester 2014</h1>
         <a class="navbar-brand" href="#">
             <img alt="" class="d-inline-block align-top" height="50"
-                 src="http://localhost:8080/img/zhaw_logo_white.png"></a>
-        <h1 class="navbar-brand">Modultafel</h1>
+                 src="https://filestore.sml.zhaw.ch/modultafeln/bachelor/logo_zhaw_sml_sw.jpg"></a>
     </nav>
-
-    <% semesterArray.forEach(semester => { %>
-        <%- include('semester', {modulesOfSemester: semester}) %>
-    <% }) %>
-
+    <div style="margin-left: 1em">
+        <% semesterArray.forEach(semester => { %>
+            <%- include('semester', {modulesOfSemester: semester}) %>
+        <% }) %>
+    </div>
 </div>
-<style><%- include('style') %></style>
+
 <script crossorigin="anonymous"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

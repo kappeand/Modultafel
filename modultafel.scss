@@ -5,7 +5,7 @@ $font-family-monospace: $font-family-sans-serif !default;
 $font-family-base: $font-family-sans-serif !default;
 
 body {
-  margin-top: 1em !important;
+  margin: 1em !important;
 }
 
 .navbar-brand {
@@ -14,13 +14,6 @@ body {
 
 .card-title, .card-text {
   font-size: 0.7rem !important;
-}
-
-@media print {
-  * {
-    color: inherit !important;
-    background: inherit !important;
-  }
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";

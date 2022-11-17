@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  margin-top: 1em !important;
+  margin: 1em !important;
 }
 
 .navbar-brand {
@@ -11,12 +11,6 @@ body {
   font-size: 0.7rem !important;
 }
 
-@media print {
-  * {
-    color: inherit !important;
-    background: inherit !important;
-  }
-}
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
