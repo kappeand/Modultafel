@@ -36,6 +36,7 @@ app.post('/upload', function (req, res) {
         modules.map(module => {
             module.FarbeModulkaestchen = colors.find(color => color.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
             module.Hintergrundfarbe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+            module.Schriftfarbe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Schriftfarbe;
         });
 
         let semesterArray = [];
