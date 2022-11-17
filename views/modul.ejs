@@ -1,14 +1,11 @@
 <!-- **************** Modul **************** -->
-<div class="col my-1">
-    <div class="card"
-         style="width: 150px; background-color: <%= module.FarbeModulkaestchen %>; cursor: pointer;"
+<div class="col my-2">
+    <div class="card" style="background-color: <%= module.FarbeModulkaestchen %>; cursor: pointer;"
          onclick="window.open('<%= module.Link %>')">
-        <div class="card-body p-2">
-            <div style="min-height: 50px;">
-                <h6 class="card-title" lang="de"
-                    style="hyphens: auto; color:<%=  module.Schriftfarbe %>;"><%= module.Modulbezeichnung %></h6>
-            </div>
+        <div class="card-body">
+            <h6 class="card-title" lang="de"
+                style="color:<%= module.Schriftfarbe %>;"><%= module.Modulbezeichnung %></h6>
         </div>
-        <p class="card-text bg-black text-white" style="border-radius: 0 0 0.1rem 0.1rem"><%= module.ECTS %> ECTS</p>
+        <p class="card-text bg-black text-white" id="ects"><%= module.ECTS %> ECTS</p>
     </div>
 </div>

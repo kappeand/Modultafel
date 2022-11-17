@@ -13,12 +13,26 @@ body {
 }
 
 .card-title, .card-text {
-  font-size: 0.7rem !important;
+  font-size: 1.2rem !important;
+  margin-bottom: 0 !important;
+  hyphens: auto;
+}
+
+.card-body {
+  min-height: 6rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .card {
-  border-radius: 0.1rem !important;
+  border-radius: 0.15rem !important;
   border-width: 0px !important;
+  width: 15rem !important;
+}
+
+#ects {
+  border-radius: 0 0 0.15rem 0.15rem;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";

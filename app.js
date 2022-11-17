@@ -31,12 +31,11 @@ app.post('/upload', function (req, res) {
         const sheetNames = workbook.SheetNames;
 
         const modules = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[1]]);
-        const colors = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
-
+        const settings = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
         modules.map(module => {
-            module.FarbeModulkaestchen = colors.find(color => color.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
-            module.Hintergrundfarbe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
-            module.Schriftfarbe = colors.find(color => color.Modulgruppe == module.Modulgruppe).Schriftfarbe;
+            module.FarbeModulkaestchen = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
+            module.Hintergrundfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+            module.Schriftfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Schriftfarbe;
         });
 
         let semesterArray = [];

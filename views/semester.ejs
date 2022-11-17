@@ -1,10 +1,10 @@
 <!-- **************** Semester **************** -->
 <div class="row">
-    <div class="col-1" style="width: 6%">
+    <div class="col-1" style="width: 7rem">
         <h4 class="text-white" style="background-color: #002c57">
             <%= modulesOfSemester[0].Semester.split('.')[0] %>
         </h4>
-        <p style="font-size: 0.8rem;">
+        <p style=" margin-bottom: 0" >
             <% numberOfECTS = 0; %>
             <% modulesOfSemester.forEach(module => {
                 numberOfECTS += module.ECTS;
