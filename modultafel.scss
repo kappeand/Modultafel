@@ -16,4 +16,11 @@ body {
   font-size: 0.7rem !important;
 }
 
+@media print {
+  * {
+    color: inherit !important;
+    background: inherit !important;
+  }
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";

@@ -23,7 +23,7 @@ app.post('/upload', function (req, res) {
     uploadPath = __dirname + '/tmp/' + Date.now() + "_" + excelFile.name;
 
     // move the file to temp path
-    excelFile.mv(uploadPath, function (err) {
+    excelFile.mv(uploadPath, async function (err) {
         if (err)
             return res.status(500).send(err);
 
@@ -45,14 +45,13 @@ app.post('/upload', function (req, res) {
                 currentSemester++;
             }
         });
-
+        const returnFile = __dirname + '/tmp/' + Date.now() + "_" + 'Modultafel.html'
         res.render('main', {semesterArray: semesterArray}, (err, html) => {
-                console.log(err);
-                fs.writeFile('Modultafel.html', html, () => {
+                fs.writeFile(returnFile, html, () => {
+                    res.download(returnFile);
                 });
             }
         );
-
     });
 });
 
