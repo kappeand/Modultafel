@@ -3,25 +3,45 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Modultafel</title>
-    <style><%- include('style') %></style>
+    <title><%= settings.Titel %></title>
+    <style><%- include('style', {settings: settings}) %></style>
 </head>
 <body>
 <div class="text-center">
     <nav class="navbar navbar-light bg-white mb-3">
         <div class="navbar-brand">
-            <h2 class="fw-bold">Modultafel Bachelorstudiengang Wirtschaftsinformatik
-                Vollzeit, ab Herbstsemester 2014</h2>
+            <h2 class="fw-bold">Modultafel Bachelorstudiengang Wirtschaftsinformatik Vollzeit, ab Herbstsemester
+                2014</h2>
         </div>
         <a class="navbar-brand" href="#">
             <img alt="" class="d-inline-block align-top" height="90"
-                 src="https://filestore.sml.zhaw.ch/modultafeln/bachelor/logo_zhaw_sml_sw.jpg"></a>
+                 src="https://filestore.sml.zhaw.ch/modultafeln/bachelor/logo_zhaw_sml_sw.jpg">
+        </a>
     </nav>
+
+    <% if(settings.hasOwnProperty('InfoTextOben')) { %>
+        <div class="alert alert-primary my-3" role="alert">
+            <%= settings.InfoTextOben %>
+        </div>
+    <% } %>
+
+    <% if(settings.hasOwnProperty('WarningTextOben')) { %>
+        <div class="alert alert-danger my-3" role="alert">
+            <%= settings.WarningTextOben %>
+        </div>
+    <% } %>
+
     <div style="margin-left: 1em">
         <% semesterArray.forEach(semester => { %>
             <%- include('semester', {modulesOfSemester: semester}) %>
         <% }) %>
     </div>
+
+    <% if(settings.hasOwnProperty('InfoTextUnten')) { %>
+        <div class="alert alert-primary my-3" role="alert">
+            <%= settings.InfoTextUnten %>
+        </div>
+    <% } %>
 </div>
 
 <script crossorigin="anonymous"

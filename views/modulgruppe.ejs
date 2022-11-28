@@ -3,7 +3,7 @@
     <div class="row">
 
         <% modulesOfModulgruppe.forEach(module => { %>
-            <%- include('modul', {module: module}) %>
+            <%- include('modul', {module: module, colorModuleGroup: modulesOfModulgruppe[0].Hintergrundfarbe}) %>
         <% }) %>
 
     </div>

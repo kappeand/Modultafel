@@ -1,11 +1,12 @@
 <!-- **************** Modul **************** -->
 <div class="col my-2">
-    <div class="card" style="background-color: <%= module.FarbeModulkaestchen %>; cursor: pointer;"
-         onclick="window.open('<%= module.Link %>')">
+    <div class="card"
+         style="background-color: <%= module.hasOwnProperty('Modulbezeichnung') ? module.FarbeModulkaestchen + '; cursor: pointer;' : colorModuleGroup %>"
+         <% if(module.hasOwnProperty('Link')) { %> onclick="window.open('<%= module.Link %>')" <% } %>>
         <div class="card-body">
             <h6 class="card-title" lang="de"
                 style="color:<%= module.Schriftfarbe %>;"><%= module.Modulbezeichnung %></h6>
         </div>
-        <p class="card-text bg-black text-white" id="ects"><%= module.ECTS %> ECTS</p>
+        <p class="card-text bg-black text-white" id="ects"><%= module.ECTS %></p>
     </div>
 </div>
