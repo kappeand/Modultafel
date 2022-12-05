@@ -25,6 +25,22 @@
 
         <div class="row">
             <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
+                <% usedModulegroups.forEach(modulegroup => {
+                    let moduleInUsedModulegroups = false;
+                    modulesOfModulgruppe.forEach(moduleOfModulgruppe => {
+                        if (moduleOfModulgruppe.Modulgruppe == modulegroup) moduleInUsedModulegroups = true;
+                    })
+                    if (!moduleInUsedModulegroups) {
+                        modulesOfModulgruppe.push({
+                            Semester: moduleOfModulgruppe.Semester,
+                            Modulgruppe: modulegroup,
+                            Hintergrundfarbe: moduleOfModulgruppe.Hintergrundfarbe
+                        });
+                    }
+                }) %>
+            <% }) %>
+
+            <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
                 <%- include('modulgruppe', {modulesOfModulgruppe: modulesOfModulgruppe, wahlmodule: wahlmodule}) %>
             <% }) %>
         </div>

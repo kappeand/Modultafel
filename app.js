@@ -50,6 +50,13 @@ app.post('/upload', function (req, res) {
             }
         });
 
+        let usedModulegroups = [];
+        modules.forEach(module => {
+            if (!usedModulegroups.includes(module.Modulgruppe)) {
+                usedModulegroups.push(module.Modulgruppe);
+            }
+        })
+
         const modulgruppen = [];
         settings.forEach(row => {
             if (row.hasOwnProperty('Modulgruppe')) {
@@ -74,6 +81,7 @@ app.post('/upload', function (req, res) {
 
         const returnFile = __dirname + '/tmp/' + Date.now() + "_" + 'Modultafel.html'
         res.render('main', {
+                usedModulegroups: usedModulegroups,
                 modulgruppen: modulgruppen,
                 semesterArray: semesterArray,
                 wahlmodule: wahlmodule,
