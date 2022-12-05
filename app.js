@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8080;
 const xlsx = require('xlsx');
 
 const fs = require('fs')
+const {add} = require("nodemon/lib/rules");
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'), fileUpload({
@@ -39,15 +40,17 @@ app.post('/upload', function (req, res) {
         });
 
         let semesterArray = [];
-        let currentSemester = modules[0].Semester.split('.')[0];
+        let addedSemesters = [];
         modules.forEach(module => {
-            if (module.Semester.split('.')[0] == currentSemester) {
-                semesterArray.push(modules.filter(module => module.Semester == currentSemester + '. Semester'));
-                currentSemester++;
+            let currentSemesterNumber = module.Semester.split('.')[0];
+            if (!addedSemesters.includes(currentSemesterNumber)) {
+                semesterArray.push(modules.filter(module => module.Semester == currentSemesterNumber + '. Semester'));
+                addedSemesters.push(currentSemesterNumber)
             }
         });
+
         const returnFile = __dirname + '/tmp/' + Date.now() + "_" + 'Modultafel.html'
-        res.render('main', {semesterArray: semesterArray}, (err, html) => {
+        res.render('main', {semesterArray: semesterArray, settings: settings[0]}, (err, html) => {
                 fs.writeFile(returnFile, html, () => {
                     res.download(returnFile);
                 });
