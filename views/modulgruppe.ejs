@@ -2,11 +2,10 @@
 <div class="col" style="max-width: fit-content; background-color: <%= modulesOfModulgruppe[0].Hintergrundfarbe %>">
     <div class="row">
         <% let moduleGroupLength = modulesOfModulgruppe.length %>
-        <% for (let i = 0; i < modulgruppen.find(modulgruppe => modulgruppe.name == modulesOfModulgruppe[0].Modulgruppe).count - moduleGroupLength; i++) {
+        <% for (let i = 0; i < usedModulegroups.find(modulgruppe => modulgruppe.name == modulesOfModulgruppe[0].Modulgruppe).count - moduleGroupLength; i++) {
             modulesOfModulgruppe.push({
                 Semester: modulesOfModulgruppe[0].Semester,
-                Modulgruppe: modulesOfModulgruppe[0].Modulgruppe,
-                i: i
+                Modulgruppe: modulesOfModulgruppe[0].Modulgruppe
             })
         }
         %>

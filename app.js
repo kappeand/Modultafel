@@ -31,8 +31,8 @@ app.post('/upload', function (req, res) {
         const workbook = xlsx.readFile(uploadPath); // parse excel file
         const sheetNames = workbook.SheetNames;
 
-        const modules = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[1]]);
         const settings = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
+        const modules = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[1]]);
         const wahlmodule = xlsx.utils.sheet_to_json(workbook.Sheets[sheetNames[2]]);
         modules.map(module => {
             module.FarbeModulkaestchen = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
@@ -52,19 +52,23 @@ app.post('/upload', function (req, res) {
 
         let usedModulegroups = [];
         modules.forEach(module => {
-            if (!usedModulegroups.includes(module.Modulgruppe)) {
-                usedModulegroups.push(module.Modulgruppe);
-            }
-        })
+            if (usedModulegroups.find(modul => modul.name == module.Modulgruppe) == undefined) {
+                let FarbeModulkaestchen = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
+                let Hintergrundfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
+                let Schriftfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Schriftfarbe;
 
-        const modulgruppen = [];
-        settings.forEach(row => {
-            if (row.hasOwnProperty('Modulgruppe')) {
-                modulgruppen.push({"name": row.Modulgruppe, "count": 1});
-            }
-        })
+                usedModulegroups.push({
+                    "name": module.Modulgruppe,
+                    "count": 1,
+                    "FarbeModulkaestchen": FarbeModulkaestchen,
+                    "Hintergrundfarbe": Hintergrundfarbe,
+                    "Schriftfarbe": Schriftfarbe
+                });
 
-        modulgruppen.forEach(modulgruppe => {
+            }
+        });
+
+        usedModulegroups.forEach(modulgruppe => {
             semesterArray.forEach(semester => {
                 let counter = 0;
                 semester.forEach(module => {
@@ -78,11 +82,9 @@ app.post('/upload', function (req, res) {
             })
         })
 
-
         const returnFile = __dirname + '/tmp/' + Date.now() + "_" + 'Modultafel.html'
         res.render('main', {
                 usedModulegroups: usedModulegroups,
-                modulgruppen: modulgruppen,
                 semesterArray: semesterArray,
                 wahlmodule: wahlmodule,
                 settings: settings[0]

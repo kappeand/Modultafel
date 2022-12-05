@@ -15,6 +15,21 @@
     <div class="col">
         <% var addedModulgruppen = [] %>
         <% var modulgruppenOfSemester = [] %>
+        <% usedModulegroups.forEach(modulegroup => {
+            let moduleGroupExists = false;
+            modulesOfSemester.forEach(module => {
+                if (module.Modulgruppe == modulegroup.name) moduleGroupExists = true;
+            })
+            if (!moduleGroupExists) {
+                modulesOfSemester.push({
+                    Semester: modulesOfSemester[0].Semester,
+                    Modulgruppe: modulegroup.name,
+                    FarbeModulkaestchen: modulegroup.FarbeModulkaestchen,
+                    Hintergrundfarbe: modulegroup.Hintergrundfarbe,
+                    Schriftfarbe: modulegroup.Schriftfarbe
+                });
+            }
+        }) %>
         <% modulesOfSemester.forEach(module => {
             var currentModulgruppe = module.Modulgruppe;
             if (!addedModulgruppen.includes(currentModulgruppe)) {
@@ -24,22 +39,6 @@
         }) %>
 
         <div class="row">
-            <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
-                <% usedModulegroups.forEach(modulegroup => {
-                    let moduleInUsedModulegroups = false;
-                    modulesOfModulgruppe.forEach(moduleOfModulgruppe => {
-                        if (moduleOfModulgruppe.Modulgruppe == modulegroup) moduleInUsedModulegroups = true;
-                    })
-                    if (!moduleInUsedModulegroups) {
-                        modulesOfModulgruppe.push({
-                            Semester: moduleOfModulgruppe.Semester,
-                            Modulgruppe: modulegroup,
-                            Hintergrundfarbe: moduleOfModulgruppe.Hintergrundfarbe
-                        });
-                    }
-                }) %>
-            <% }) %>
-
             <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
                 <%- include('modulgruppe', {modulesOfModulgruppe: modulesOfModulgruppe, wahlmodule: wahlmodule}) %>
             <% }) %>
