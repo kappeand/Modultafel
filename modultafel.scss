@@ -12,6 +12,10 @@ body {
   margin: 0 1em;
 }
 
+.row {
+  flex-wrap: nowrap !important;
+}
+
 .card-title, .card-text {
   font-size: 1.2rem !important;
   margin-bottom: 0 !important;
@@ -19,13 +23,13 @@ body {
 }
 
 .card-body {
-  min-height: 6rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
 .card {
+  min-height: 8em !important;
   border-radius: 0.15rem !important;
   border-width: 0px !important;
   width: 15rem !important;

@@ -4,7 +4,7 @@
         <h4 class="text-white" style="background-color: #002c57">
             <%= modulesOfSemester[0].Semester.split('.')[0] %>
         </h4>
-        <p style=" margin-bottom: 0" >
+        <p style=" margin-bottom: 0">
             <% numberOfECTS = 0; %>
             <% modulesOfSemester.forEach(module => {
                 numberOfECTS += module.ECTS;
@@ -13,19 +13,19 @@
         </p>
     </div>
     <div class="col">
-        <div class="row">
-            <% var addedModulgruppen = [] %>
-            <% var modulgruppenOfSemester = [] %>
-            <% modulesOfSemester.forEach(module => {
-                var currentModulgruppe = module.Modulgruppe;
-                if (!addedModulgruppen.includes(currentModulgruppe)) {
-                    modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === currentModulgruppe));
-                    addedModulgruppen.push(currentModulgruppe);
-                }
-            }) %>
+        <% var addedModulgruppen = [] %>
+        <% var modulgruppenOfSemester = [] %>
+        <% modulesOfSemester.forEach(module => {
+            var currentModulgruppe = module.Modulgruppe;
+            if (!addedModulgruppen.includes(currentModulgruppe)) {
+                modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === currentModulgruppe));
+                addedModulgruppen.push(currentModulgruppe);
+            }
+        }) %>
 
+        <div class="row">
             <% modulgruppenOfSemester.forEach(modulesOfModulgruppe => { %>
-                <%- include('modulgruppe', {modulesOfModulgruppe: modulesOfModulgruppe}) %>
+                <%- include('modulgruppe', {modulesOfModulgruppe: modulesOfModulgruppe, wahlmodule: wahlmodule}) %>
             <% }) %>
         </div>
     </div>

@@ -1,0 +1,22 @@
+<div class="modal fade" id="modal<%= modalId %>" tabindex="-1" aria-labelledby="<%= modalId %>Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%= module.Modulbezeichnung %></h5>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <% module.Wahlpflichtmodul.split('\r\n').forEach(splitWahlmodul => { %>
+                        <li class="list-group-item" style="text-align: left"
+                            onclick="window.open('<%= wahlmodule.find(wahlmodul => wahlmodul.Modulbezeichnung == splitWahlmodul.replace(/(\r\n|\n|\r)/gm, ""))['Link zur Modulbeschreibung'] %>')">
+                            <%= splitWahlmodul %>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
