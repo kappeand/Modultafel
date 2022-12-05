@@ -1,12 +1,15 @@
 <!-- **************** Modulgruppe **************** -->
 <div class="col" style="max-width: fit-content; background-color: <%= modulesOfModulgruppe[0].Hintergrundfarbe %>">
     <div class="row">
-        <% for (let i = 0; i < modulgruppen.find(modulgruppe => modulgruppe.name == modulesOfModulgruppe[0].Modulgruppe).count - modulesOfModulgruppe.length; i++) {
+        <% let moduleGroupLength = modulesOfModulgruppe.length %>
+        <% for (let i = 0; i < modulgruppen.find(modulgruppe => modulgruppe.name == modulesOfModulgruppe[0].Modulgruppe).count - moduleGroupLength; i++) {
             modulesOfModulgruppe.push({
                 Semester: modulesOfModulgruppe[0].Semester,
-                Modulgruppe: modulesOfModulgruppe[0].Modulgruppe
+                Modulgruppe: modulesOfModulgruppe[0].Modulgruppe,
+                i: i
             })
-        } %>
+        }
+        %>
 
         <% modulesOfModulgruppe.forEach(module => { %>
             <%- include('modul', {module: module, colorModuleGroup: modulesOfModulgruppe[0].Hintergrundfarbe, wahlmodule: wahlmodule}) %>
