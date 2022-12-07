@@ -30,12 +30,8 @@
                 });
             }
         }) %>
-        <% modulesOfSemester.forEach(module => {
-            var currentModulgruppe = module.Modulgruppe;
-            if (!addedModulgruppen.includes(currentModulgruppe)) {
-                modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === currentModulgruppe));
-                addedModulgruppen.push(currentModulgruppe);
-            }
+        <% usedModulegroups.forEach(moduleGroup => {
+            modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === moduleGroup.name));
         }) %>
 
         <div class="row">
