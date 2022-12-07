@@ -13,6 +13,9 @@
                         </li>
                     <% }) %>
                 </ul>
+                <% if(settings.hasOwnProperty('WarningTextOben')) { %>
+                    <p style="font-weight: bold; margin-top: 1em; text-align: left; color: red"> <%= settings.WarningTextWPM %></p>
+                <% } %>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

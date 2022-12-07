@@ -26,11 +26,13 @@
                     Modulgruppe: modulegroup.name,
                     FarbeModulkaestchen: modulegroup.FarbeModulkaestchen,
                     Hintergrundfarbe: modulegroup.Hintergrundfarbe,
-                    Schriftfarbe: modulegroup.Schriftfarbe
+                    Schriftfarbe: modulegroup.Schriftfarbe,
+                    Reihenfolge: modulegroup.Reihenfolge
                 });
             }
-        }) %>
-        <% usedModulegroups.forEach(moduleGroup => {
+        })
+        usedModulegroups.sort((a,b) => a.Reihenfolge - b.Reihenfolge);
+        usedModulegroups.forEach(moduleGroup => {
             modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === moduleGroup.name));
         }) %>
 
