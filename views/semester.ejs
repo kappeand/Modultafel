@@ -26,16 +26,14 @@
                     Modulgruppe: modulegroup.name,
                     FarbeModulkaestchen: modulegroup.FarbeModulkaestchen,
                     Hintergrundfarbe: modulegroup.Hintergrundfarbe,
-                    Schriftfarbe: modulegroup.Schriftfarbe
+                    Schriftfarbe: modulegroup.Schriftfarbe,
+                    Reihenfolge: modulegroup.Reihenfolge
                 });
             }
-        }) %>
-        <% modulesOfSemester.forEach(module => {
-            var currentModulgruppe = module.Modulgruppe;
-            if (!addedModulgruppen.includes(currentModulgruppe)) {
-                modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === currentModulgruppe));
-                addedModulgruppen.push(currentModulgruppe);
-            }
+        })
+        usedModulegroups.sort((a,b) => a.Reihenfolge - b.Reihenfolge);
+        usedModulegroups.forEach(moduleGroup => {
+            modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === moduleGroup.name));
         }) %>
 
         <div class="row">

@@ -51,18 +51,21 @@ app.post('/upload', function (req, res) {
         });
 
         let usedModulegroups = [];
+        let counter
         modules.forEach(module => {
             if (usedModulegroups.find(modul => modul.name == module.Modulgruppe) == undefined) {
                 let FarbeModulkaestchen = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).FarbeModulkaestchen;
                 let Hintergrundfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Hintergrundfarbe;
                 let Schriftfarbe = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Schriftfarbe;
+                let Reihenfolge = settings.find(settings => settings.Modulgruppe == module.Modulgruppe).Reihenfolge;
 
                 usedModulegroups.push({
                     "name": module.Modulgruppe,
                     "count": 1,
                     "FarbeModulkaestchen": FarbeModulkaestchen,
                     "Hintergrundfarbe": Hintergrundfarbe,
-                    "Schriftfarbe": Schriftfarbe
+                    "Schriftfarbe": Schriftfarbe,
+                    "Reihenfolge": Reihenfolge
                 });
 
             }
