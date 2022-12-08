@@ -3,6 +3,10 @@ body {
   margin: 1em !important;
 }
 
+.navbar {
+  flex-wrap: nowrap !important;
+}
+
 .navbar-brand {
   margin: 0 1em;
 }
