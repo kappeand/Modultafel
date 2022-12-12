@@ -7,7 +7,9 @@
         <p style=" margin-bottom: 0">
             <% numberOfECTS = 0; %>
             <% modulesOfSemester.forEach(module => {
-                numberOfECTS += module.ECTS;
+                if (!isNaN(module.ECTS)) {
+                    numberOfECTS += module.ECTS;
+                }
             }); %>
             <%= numberOfECTS %> ECTS
         </p>
@@ -31,7 +33,7 @@
                 });
             }
         })
-        usedModulegroups.sort((a,b) => a.Reihenfolge - b.Reihenfolge);
+        usedModulegroups.sort((a, b) => a.Reihenfolge - b.Reihenfolge);
         usedModulegroups.forEach(moduleGroup => {
             modulgruppenOfSemester.push(modulesOfSemester.filter(module => module.Modulgruppe === moduleGroup.name));
         }) %>
